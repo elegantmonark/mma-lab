@@ -17,15 +17,19 @@ Striking Lab 3D is an interactive React and Three.js striking-combo visualiser. 
 striking_lab/
 ├─ index.html
 ├─ main.jsx
+├─ striking-lab-3d-fbx.jsx
 ├─ striking-lab-3d.jsx
 ├─ standalone.html
 ├─ striking-lab-3d-standalone.jsx
-├─ fbx_files/
+├─ public/
+│  └─ fbx_files/
 ├─ package.json
 └─ package-lock.json
 ```
 
 ## Run The Vite App
+
+The default Vite app uses `striking-lab-3d-fbx.jsx`, which loads the Mixamo/FBX animation files from `fbx_files/`.
 
 Install dependencies:
 
@@ -47,7 +51,7 @@ npm run build
 
 ## Standalone FBX Demo
 
-The standalone version loads FBX animation files from `fbx_files/`.
+The standalone version loads FBX animation files from `public/fbx_files/`.
 
 On Windows, run:
 
@@ -65,5 +69,4 @@ The standalone page still expects dependencies to be installed with `npm install
 
 ## Asset Notes
 
-The FBX files in `fbx_files/` are required for the standalone animation viewer. Confirm you have the right to publish these assets before making the repository public.
-
+The FBX files in `public/fbx_files/` are required for the animation viewer. Keeping them under `public/` ensures Vite copies them into production builds for deployment.

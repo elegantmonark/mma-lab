@@ -1,5 +1,6 @@
-const { useState, useCallback, useEffect, useRef } = React;
-const THREE = window.THREE;
+import { useState, useCallback, useEffect, useRef } from "react";
+import * as THREE from "three";
+import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 
 /* ═══════════════════════════════════════════════════════════
    STRIKE & COMBO DATA
@@ -35,7 +36,7 @@ const CLASSIC_COMBOS = [
   { name: "Takedown", keys: ["jab_cross", "single_leg", "double_leg"], desc: "Leg attack sequence" },
 ];
 
-const FBX_LOADER = window.FBXLoader || null;
+const FBX_LOADER = FBXLoader;
 const FBX_IDLE_FILE = "idle_stance_midguard.fbx";
 const FBX_STRIKE_FILES = Object.keys(STRIKES).reduce((acc, key) => {
   acc[key] = `${key}.fbx`;
@@ -703,7 +704,7 @@ const Bar = ({ label, value, max = 10, color }) => (
 /* ═══════════════════════════════════════════════════════════
    MAIN COMPONENT
    ═══════════════════════════════════════════════════════════ */
-function StrikingLab3D() {
+export default function StrikingLab3D() {
   const [combo, setCombo] = useState([]);
   const [stance, setStance] = useState("orthodox");
   const [playing, setPlaying] = useState(false);
@@ -775,7 +776,7 @@ function StrikingLab3D() {
         });
 
         const a = animRef.current;
-        const mocapRoot = await loadFBX(`./public/fbx_files/${FBX_IDLE_FILE}`);
+        const mocapRoot = await loadFBX(`./fbx_files/${FBX_IDLE_FILE}`);
         mocapRoot.scale.setScalar(0.01);
         mocapRoot.position.set(0, 0, 0);
         mocapRoot.traverse((child) => {
@@ -793,7 +794,7 @@ function StrikingLab3D() {
         for (const key of Object.keys(FBX_STRIKE_FILES)) {
           const file = FBX_STRIKE_FILES[key];
           try {
-            const animFBX = await loadFBX(`./public/fbx_files/${file}`);
+            const animFBX = await loadFBX(`./fbx_files/${file}`);
             const clip = animFBX.animations && animFBX.animations[0];
             if (!clip) continue;
             const action = mixer.clipAction(clip);
@@ -1272,5 +1273,3 @@ function StrikingLab3D() {
     </div>
   );
 }
-
-ReactDOM.createRoot(document.getElementById("root")).render(<StrikingLab3D />);
