@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Striking Lab 3D (Standalone)</title>
+    <style>
+      html, body { margin: 0; background: #0a0a0a; }
+      #root { min-height: 100vh; }
+    </style>
+    <script src="./node_modules/react/umd/react.production.min.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js",
+          "three/addons/": "./node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      try {
+        const THREE = await import("three");
+        const { FBXLoader } = await import("three/addons/loaders/FBXLoader.js");
+        window.THREE = THREE;
+        window.FBXLoader = FBXLoader;
+
+        if (!window.Babel) throw new Error("Babel failed to load.");
+
+        const response = await fetch("./striking-lab-3d-standalone.jsx");
+        if (!response.ok) throw new Error("Failed to load app script.");
+        const source = await response.text();
+        const transformed = Babel.transform(source, { presets: ["env", "react"] }).code;
+
+        const run = document.createElement("script");
+        run.text = transformed;
+        document.body.appendChild(run);
+      } catch (err) {
+        const box = document.createElement("div");
+        box.style.cssText = "color:#ffd6d1;background:#5a0000;border:1px solid #ff4136;padding:12px;margin:16px;font-family:monospace;border-radius:6px;";
+        box.textContent = "Standalone loader failed: " + (err?.message || String(err));
+        document.body.appendChild(box);
+      }
+    </script>
+  </body>
+</html>
+
