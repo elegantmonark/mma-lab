@@ -1,6 +1,8 @@
-# Striking Lab 3D
+# MMA Lab 3D
 
-Striking Lab 3D is an interactive React and Three.js striking-combo visualiser. It lets you build short combat-sport combinations, play them on a 3D fighter model, and compare simple power, speed, and flow ratings.
+MMA Lab 3D is an interactive React and Three.js striking-combo visualiser. It lets you build short combat-sport combinations, play them on a 3D fighter model, and compare simple power, speed, and flow ratings.
+
+**Live Demo:** [mma-lab.netlify.app](https://mma-lab.netlify.app)
 
 ## Features
 
@@ -15,16 +17,16 @@ Striking Lab 3D is an interactive React and Three.js striking-combo visualiser. 
 
 ```text
 striking_lab/
-├─ index.html
-├─ main.jsx
-├─ striking-lab-3d-fbx.jsx
-├─ striking-lab-3d.jsx
-├─ standalone.html
-├─ striking-lab-3d-standalone.jsx
-├─ public/
-│  └─ fbx_files/
-├─ package.json
-└─ package-lock.json
++-- index.html
++-- main.jsx
++-- striking-lab-3d-fbx.jsx
++-- striking-lab-3d.jsx
++-- standalone.html
++-- striking-lab-3d-standalone.jsx
++-- public/
+|   +-- fbx_files/
++-- package.json
++-- package-lock.json
 ```
 
 ## Run The Vite App
