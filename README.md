@@ -1,8 +1,26 @@
 # MMA Lab 3D
 
+<div align="center">
+
+**Interactive 3D combat-sport combo visualiser using React, Three.js, and FBX/Mixamo animation playback.**
+
+[Live Demo](https://mma-lab.netlify.app) | [Run Locally](#run-the-vite-app) | [Standalone Demo](#standalone-fbx-demo)
+
+</div>
+
 MMA Lab 3D is an interactive React and Three.js striking-combo visualiser. It lets you build short combat-sport combinations, play them on a 3D fighter model, and compare simple power, speed, and flow ratings.
 
 **Live Demo:** [mma-lab.netlify.app](https://mma-lab.netlify.app)
+
+## At A Glance
+
+| Area | Details |
+| --- | --- |
+| Interface | Browser-based 3D combo builder |
+| Rendering | Three.js scene with animated fighter model |
+| Animation | FBX/Mixamo action clips for strikes and grappling entries |
+| Stack | React, Vite, Three.js, JavaScript |
+| Deployment | Netlify-hosted live demo |
 
 ## Features
 
@@ -72,3 +90,7 @@ The standalone page still expects dependencies to be installed with `npm install
 ## Asset Notes
 
 The FBX files in `public/fbx_files/` are required for the animation viewer. Keeping them under `public/` ensures Vite copies them into production builds for deployment.
+
+## Current Focus
+
+MMA Lab is a public interactive/animation build rather than a core research repo. The most useful next improvements are UX and motion quality: smoother transitions between moves, cleaner combo timing, better camera presets, and screenshots or GIFs for the README.
